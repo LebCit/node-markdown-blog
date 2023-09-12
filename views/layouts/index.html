@@ -1,0 +1,53 @@
+<% it.posts.forEach(post => { %>
+
+<!-- GETTING THE DATA OF EACH POST -->
+
+<!-- Get the Markdown filename without its extension -->
+<% const postFilename = post[0].replace(".md", "") %>
+
+<!-- Get the Markdown post title from its front matter -->
+<% const postTitle = post[1].frontmatter.title %>
+
+<!-- Get the post date from its front matter -->
+<% const postDate = post[1].frontmatter.date %>
+
+<!-- Get the post description from its front matter -->
+<% const postDescription = post[1].frontmatter.description %>
+
+<!-- Get the post tags from its front matter -->
+<% const postTags = post[1].frontmatter.tags %>
+
+<!-- Get the post image from its front matter -->
+<% const postImage = post[1].frontmatter.image %>
+
+<!-- Get the post image alternative text from its front matter -->
+<% const postImageAlt = post[1].frontmatter.imageAlt %>
+
+<div class="item mb-5">
+	<div class="row g-3 g-xl-0">
+		<div class="col-2 col-xl-3">
+			<img class="img-fluid post-thumb" src="<%= postImage %>" alt="<%= postImageAlt %>" />
+		</div>
+		<div class="col">
+			<h3 class="title mb-1">
+				<a class="text-link" href="/posts/<%= postFilename %>"><%= postTitle %></a>
+			</h3>
+			<div class="meta mb-1">
+				<span class="date"><%= postDate %></span>
+				<span>
+					<!-- Start post tag(s) -->
+					<% postTags.forEach(tag => { %>
+					<!-- Start each tag markup -->
+					<%= tag %>
+					<!-- End each tag markup -->
+					<% }) %>
+					<!-- End post tag(s) -->
+				</span>
+			</div>
+			<div class="intro"><%= postDescription %></div>
+			<a class="text-link" href="/posts/<%= postFilename %>">Read more &rarr;</a>
+		</div>
+	</div>
+</div>
+
+<% }) %>

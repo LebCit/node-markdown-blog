@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!-- Include the content of head.html file here -->
+	<%~ include('../components/head.html', it) %>
+	<body>
+		<!-- Include the content of header.html file here -->
+		<%~ include('../components/header.html') %>
+		<div class="main-wrapper">
+			<!-- Here we open the if...else statement @see https://javascript.info/ifelse -->
+			<% if (it.mainRoute) { %>
+			<!-- If we are on the main route, the route that displays the list of posts -->
+
+			<!-- BEGINNING OF THE BLOG'S STRUCTURE -->
+
+			<!-- Start blog's intro -->
+			<section class="cta-section theme-bg-light py-5">
+				<div class="container text-center single-col-max-width">
+					<h2 class="heading">Markdown-based blog - A Markdown Blog Made With Node.js</h2>
+					<div class="intro">Welcome to my blog. Hope that you'll find useful information in my posts.</div>
+				</div>
+			</section>
+			<!-- End blog's intro -->
+
+			<!-- Start blog's posts' list -->
+			<section class="blog-list px-3 py-5 p-md-5">
+				<div class="container single-col-max-width">
+					<!-- Include the content of index.html file here -->
+					<%~ include('./index.html', it) %>
+				</div>
+			</section>
+			<!-- End blog's posts' list -->
+
+			<!-- ENDING OF THE BLOG'S STRUCTURE -->
+
+			<% } else { %>
+			<!-- Else we are not on the main route, we are on a route that displays a Markdown file -->
+
+			<!-- Start Markdown file content -->
+
+			<!-- Include the content of markdown.html file here -->
+			<%~ include('./markdown.html', it) %>
+
+			<!-- End Markdown file content -->
+
+			<% } %>
+			<!-- Here we close the if...else statement @see https://javascript.info/ifelse -->
+
+			<!-- Start footer -->
+
+			<!-- Include the content of footer.html file here -->
+			<%~ include('../components/footer.html') %>
+
+			<!-- End footer -->
+		</div>
+
+		<!-- Bootstrap's JavaScript -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

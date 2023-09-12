@@ -1,0 +1,38 @@
+<article class="blog-post px-3 py-5 p-md-5">
+	<div class="container single-col-max-width">
+		<header class="blog-post-header">
+			<h2 class="title mb-2"><%= it.data.title %></h2>
+			<h3><%= it.data.description %></h3>
+			<% if (it.dirname === "posts") { %>
+			<div class="meta mb-3">
+				<span class="date"><%= it.data.date %></span>
+				<span>
+					<!-- Start post tag(s) -->
+					<% it.data.tags.forEach(tag => { %>
+					<!-- Start each tag markup -->
+					<%= tag %>
+					<!-- End each tag markup -->
+					<% }) %>
+					<!-- End post tag(s) -->
+				</span>
+			</div>
+			<% } %>
+		</header>
+
+		<div class="blog-post-body">
+			<!-- Markdown file image -->
+			<figure class="blog-banner">
+				<a href="<%= it.data.imageCredit %>" target="_blank">
+					<img class="img-fluid" src="<%= it.data.image %>" alt="<%= it.data.imageAlt %>" />
+				</a>
+				<figcaption class="mt-2 text-center image-caption">
+					Image Credit:
+					<a class="theme-link" href="<%= it.data.imageCredit %>" target="_blank"><%= it.data.imageAlt %></a>
+				</figcaption>
+			</figure>
+
+			<!-- Markdown file content -->
+			<%~ it.content %>
+		</div>
+	</div>
+</article>
